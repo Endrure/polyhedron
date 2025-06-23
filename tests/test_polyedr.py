@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch, mock_open
 import ans  # переменная ans.ans будет проверяться
 from shadow.polyedr import Polyedr  # используем shadow для всех классов
-# import noshadow.polyedr  # больше не нужен
 
 
 class TestPolyedr(unittest.TestCase):
@@ -23,10 +22,12 @@ class TestPolyedr(unittest.TestCase):
 4 3 7 8 4
 4 1 4 8 5"""
         fake_file_path = 'data/holey_box.geom'
-        with patch('shadow.polyedr.open', new=mock_open(read_data=fake_file_content)) as _file:
+        with patch(
+            'shadow.polyedr.open',
+            new=mock_open(read_data=fake_file_content)
+        ) as _file:
             self.polyedr = Polyedr(fake_file_path)
             _file.assert_called_once_with(fake_file_path)
-
 
     def test_num_vertexes(self):
         self.assertEqual(len(self.polyedr.vertexes), 8)
@@ -58,7 +59,10 @@ class TestPolyedrAnsValue1(unittest.TestCase):
 
     def test_ans_value(self):
         fake_path = 'data/fake_file.geom'
-        with patch('shadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
+        with patch(
+            'shadow.polyedr.open',
+            new=mock_open(read_data=self.fake_file_content)
+        ):
             Polyedr(fake_path)
         self.assertEqual(ans.ans, 0)
 
@@ -76,11 +80,14 @@ class TestPolyedrAnsValue2(unittest.TestCase):
 6.0 1.0 3.0
 6.0 6.0 3.0
 1.0 6.0 3.0
-4 1    2    3    4    
+4 1    2    3    4
 4 5    6    7    8"""
 
     def test_ans_value(self):
         fake_path = 'data/fake_file.geom'
-        with patch('shadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
+        with patch(
+            'shadow.polyedr.open',
+            new=mock_open(read_data=self.fake_file_content)
+        ):
             Polyedr(fake_path)
         self.assertEqual(ans.ans, 50)
