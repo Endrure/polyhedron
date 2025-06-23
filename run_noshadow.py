@@ -18,6 +18,14 @@ try:
         print("=============================================================")
         print(ans.ans, "= сумма площадей")
         print("=============================================================")
+        tk.canvas.create_text(
+            890, 10,
+            text=str(ans.ans),
+            anchor='ne',
+            font=('Arial', 14),
+            fill='red'
+        )
+        tk.root.update()
         input("Hit 'Return' to continue -> ")
 except (EOFError, KeyboardInterrupt):
     print("\nStop")
