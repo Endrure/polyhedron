@@ -7,7 +7,7 @@ import ans
 
 tk = TkDrawer()
 try:
-    for name in ["custom_no"]:
+    for name in ["ccc", "cube", "box", "king", "cow"]:
         ans.ans = 0
         print("=============================================================")
         print(f"Начало работы с полиэдром '{name}'")
