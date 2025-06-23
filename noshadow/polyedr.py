@@ -1,6 +1,5 @@
 from math import pi
 from common.r3 import R3
-from common.tk_drawer import TkDrawer
 import ans
 
 
