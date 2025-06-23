@@ -1,8 +1,9 @@
 import unittest
 from unittest.mock import patch, mock_open
 import ans  # переменная ans.ans будет проверяться
-from shadow.polyedr import Polyedr
-import noshadow.polyedr
+from shadow.polyedr import Polyedr  # используем shadow для всех классов
+# import noshadow.polyedr  # больше не нужен
+
 
 class TestPolyedr(unittest.TestCase):
     @classmethod
@@ -25,6 +26,7 @@ class TestPolyedr(unittest.TestCase):
         with patch('shadow.polyedr.open', new=mock_open(read_data=fake_file_content)) as _file:
             self.polyedr = Polyedr(fake_file_path)
             _file.assert_called_once_with(fake_file_path)
+
 
     def test_num_vertexes(self):
         self.assertEqual(len(self.polyedr.vertexes), 8)
@@ -56,10 +58,9 @@ class TestPolyedrAnsValue1(unittest.TestCase):
 
     def test_ans_value(self):
         fake_path = 'data/fake_file.geom'
-        with patch('noshadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
-            noshadow.polyedr.Polyedr(fake_path)
+        with patch('shadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
+            Polyedr(fake_path)
         self.assertEqual(ans.ans, 0)
-
 
 
 class TestPolyedrAnsValue2(unittest.TestCase):
@@ -80,6 +81,6 @@ class TestPolyedrAnsValue2(unittest.TestCase):
 
     def test_ans_value(self):
         fake_path = 'data/fake_file.geom'
-        with patch('noshadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
-            noshadow.polyedr.Polyedr(fake_path)
+        with patch('shadow.polyedr.open', new=mock_open(read_data=self.fake_file_content)):
+            Polyedr(fake_path)
         self.assertEqual(ans.ans, 50)
