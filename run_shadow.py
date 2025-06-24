@@ -16,11 +16,11 @@ try:
         delta_time = time() - start_time
         print(f"Изображение полиэдра '{name}' заняло {delta_time} сек.")
         print("=============================================================")
-        print(ans.ans, "= сумма площадей")
+        print(f"{ans.ans:.1f} = сумма площадей")
         print("=============================================================")
         tk.canvas.create_text(
             890, 10,
-            text=str(ans.ans),
+            text = f"{ans.ans:.1f}",
             anchor='ne',
             font=('Arial', 14),
             fill='red'
