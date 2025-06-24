@@ -1,1 +1,1 @@
-ans = float(0) 
+ans = float(0)
