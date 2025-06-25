@@ -20,7 +20,7 @@ try:
         print("=============================================================")
         tk.canvas.create_text(
             890, 10,
-            text = f"{ans.ans:.1f}",
+            text=f"{ans.ans:.1f}",
             anchor='ne',
             font=('Arial', 14),
             fill='red'
